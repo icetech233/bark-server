@@ -129,6 +129,7 @@ func Push(msg *PushMessage) (code int, err error) {
 		pl.Custom(strings.ToLower(k), fmt.Sprintf("%v", v))
 	}
 
+	// ???
 	client := <-clients // grab a client from the pool
 	clients <- client   // add the client back to the pool
 

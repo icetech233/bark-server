@@ -1,12 +1,14 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"net/url"
 	"strings"
 	"sync"
 
 	"github.com/gofiber/fiber/v2/utils"
+	"github.com/mritd/logger"
 
 	"github.com/finb/bark-server/v2/apns"
 
@@ -25,7 +27,7 @@ func init() {
 	// compatible with old requests
 	registerRouteWithWeight("push_compat", 1, func(router fiber.Router) {
 		router.Get("/:device_key", func(c *fiber.Ctx) error { return routeDoPush(c) })
-		router.Post("/:device_key", func(c *fiber.Ctx) error { return routeDoPush(c) })
+		router.Post("/:device_key", func(c *fiber.Ctx) error { return routeDoPush666(c) })
 
 		router.Get("/:device_key/:body", func(c *fiber.Ctx) error { return routeDoPush(c) })
 		router.Post("/:device_key/:body", func(c *fiber.Ctx) error { return routeDoPush(c) })
@@ -42,6 +44,12 @@ func init() {
 func SetMaxBatchPushCount(count int) {
 	maxBatchPushCount = count
 }
+
+func routeDoPush666(c *fiber.Ctx) error {
+	logger.Info("routeDoPush666.")
+	return routeDoPushV2(c)
+}
+
 func routeDoPush(c *fiber.Ctx) error {
 	// Get content-type
 	contentType := utils.ToLower(utils.UnsafeString(c.Request().Header.ContentType()))
@@ -247,6 +255,10 @@ func push(params map[string]interface{}) (int, error) {
 		}
 	}
 
+	bb, _ := json.Marshal(msg)
+
+	logger.Info("msg:%s", string(bb))
+
 	if msg.DeviceKey == "" {
 		return 400, fmt.Errorf("device key is empty")
 	}
@@ -260,13 +272,6 @@ func push(params map[string]interface{}) (int, error) {
 	if err != nil {
 		return 400, fmt.Errorf("failed to get device token: %v", err)
 	}
-
-	// Remove deviceToken if it’s too long, to clean up junk data.
-	if len(deviceToken) > 128 {
-		_ = db.DeleteDeviceByKey(msg.DeviceKey)
-		return 400, fmt.Errorf("invalid device token, has been removed")
-	}
-
 	msg.DeviceToken = deviceToken
 
 	code, err := apns.Push(&msg)

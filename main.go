@@ -37,7 +37,7 @@ func main() {
 				Name:    "addr",
 				Usage:   "Server listen address",
 				EnvVars: []string{"BARK_SERVER_ADDRESS"},
-				Value:   "0.0.0.0:8080",
+				Value:   "0.0.0.0:80",
 			},
 			&cli.StringFlag{
 				Name:    "url-prefix",
@@ -185,17 +185,19 @@ func main() {
 			})
 
 			fiberRouter := fiberApp.Group(c.String("url-prefix"))
-			routerAuth(c.String("user"), c.String("password"), fiberRouter, c.String("url-prefix"))
+			// routerAuth(c.String("user"), c.String("password"), fiberRouter, c.String("url-prefix"))
 			routerSetup(fiberRouter)
 
-			if serverless := c.Bool("serverless"); serverless {
-				// use system environment variable.
-				db = database.NewEnvBase()
-			} else if dsn := c.String("dsn"); dsn != "" {
-				db = database.NewMySQL(dsn)
-			} else {
-				db = database.NewBboltdb(c.String("data"))
-			}
+			// if serverless := c.Bool("serverless"); serverless {
+			// 	// use system environment variable.
+			// 	db = database.NewEnvBase()
+			// } else if dsn := c.String("dsn"); dsn != "" {
+			// 	db = database.NewMySQL(dsn)
+			// } else {
+			// 	db = database.NewBboltdb(c.String("data"))
+			// }
+
+			db = database.NewBboltdb(c.String("data"))
 
 			go func() {
 				sigs := make(chan os.Signal, 1)

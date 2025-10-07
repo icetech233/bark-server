@@ -1,0 +1,60 @@
+2025-09-15 01:02:04    INFO    load route [register_compat] success...
+2025-09-15 01:02:04    INFO    load route [misc] success...
+2025-09-15 01:02:04    INFO    load route [push] success...
+2025-09-15 01:02:04    INFO    load route [register] success...       
+2025-09-15 01:02:04    INFO    load route [push_compat] success...    
+2025-09-15 01:02:04    INFO    init database [/data]...
+2025-09-15 01:02:04    INFO    Bark Server Listen at: 0.0.0.0:80 , Database: *database.BboltDB
+
+ ┌───────────────────────────────────────────────────┐ 
+ │                   Fiber v2.52.9                   │
+ │                  http://[::]:80                   │
+ │                                                   │
+ │ Handlers ............ 28  Processes ........... 1 │
+ │ Prefork ....... Disabled  PID .............. 4988 │
+ └───────────────────────────────────────────────────┘ 
+
+2025-09-15 01:02:42     INFO    192.168.69.234 -> [200] GET            0s / => / 
+2025-09-15 01:02:42     INFO    192.168.69.234 -> [400] GET            0s /:device_key => /favicon.ico 
+2025-09-15 01:03:03     INFO    192.168.69.84 -> [200] GET            0s /ping => /ping 
+2025-09-15 01:03:03     INFO    192.168.69.84 -> [200] GET       894.8µs /register => /register?devicetoken=f704c5d42ce2fdb38697a0c67c10b1c1579e39d3fbfceecc1e1d58c4bb10ead7&key= 
+2025-09-15 01:03:03     INFO    192.168.69.84 -> [200] GET            0s /ping => /ping 
+2025-09-15 01:03:18     INFO    192.168.69.84 -> [200] GET    839.9156ms /:device_key/:body => /QZKegJC3LmmZ5Ve3xsL3i4/%E8%BF%99%E9%87%8C%E6%94%B9%E6%88%90%E4%BD%A0%E8%87%AA%E5%B7%B1%E7%9A%84%E6%8E%A8%E9%80%81%E5%86%85%E5%AE%B9 
+
+
+2025-09-15 01:04:59     INFO    192.168.69.84 -> [400] GET            0s /:device_key => /favicon.ico 
+2025-09-15 01:05:57     INFO    192.168.69.84 -> [200] POST    268.1517ms /:device_key => /QZKegJC3LmmZ5Ve3xsL3i4 {"body":"hello","call":1,"title":"test","level":"critical"}
+2025-09-15 01:06:05     INFO    192.168.69.84 -> [200] POST    261.1171ms /:device_key => /QZKegJC3LmmZ5Ve3xsL3i4 {"body":"hello","call":1,"title":"test","level":"critical"}
+2025-09-15 01:06:39     INFO    192.168.69.84 -> [200] POST    277.6596ms /:device_key => /QZKegJC3LmmZ5Ve3xsL3i4 {"volume":2,"body":"hello","title":"test","sound":"bell"}
+2025-09-15 01:06:51     INFO    192.168.69.84 -> [200] POST    272.5592ms /:device_key => /QZKegJC3LmmZ5Ve3xsL3i4 {"sound":"bell","volume":2,"title":"test","body":"hello"}
+2025-09-15 01:06:57     INFO    192.168.69.84 -> [200] POST    273.3026ms /:device_key => /QZKegJC3LmmZ5Ve3xsL3i4 {"sound":"bell","volume":2,"body":"hello","title":"test"}
+2025-09-15 01:07:03     INFO    192.168.69.84 -> [200] POST    267.4342ms /:device_key => /QZKegJC3LmmZ5Ve3xsL3i4 {"sound":"bell","call":1,"title":"test","volume":2,"body":"hello"}
+
+
+2025-09-15 01:15:50     INFO    192.168.69.192 -> [200] GET     12.2376ms /register => /register?devicetoken=1222ea3763e15b9dccfec642b8c73b38bb96e7a47592f4591f1cafb07984cfc6&key= 
+2025-09-15 01:15:51     INFO    192.168.69.192 -> [200] GET     10.6998ms /ping => /ping 
+2025-09-15 01:20:42     INFO    192.168.69.192 -> [200] GET       508.9µs /register => /register?devicetoken=1222ea3763e15b9dccfec642b8c73b38bb96e7a47592f4591f1cafb07984cfc6&key=E7gBbmMxrKUoVdatpm4ijC 
+
+2025-09-15 02:07:05    INFO    msg:%s{"device_key":"QZKegJC3LmmZ5Ve3xsL3i4","title":"test","body":"hello","sound":"bloom.caf","ext_params":{"level":"critical","volume":3}}
+2025-09-15 02:07:04     INFO    192.168.69.84 -> [200] POST    840.2798ms /:device_key => /QZKegJC3LmmZ5Ve3xsL3i4 {"body":"hello","volume":3,"title":"test","level":"critical","sound":"bloom"}
+
+2025-09-15 02:55:39    INFO    msg:%s{"device_key":"E7gBbmMxrKUoVdatpm4ijC","title":"90","sound":"1107"}
+2025-09-15 02:55:38 INFO 192.168.69.192 -> [200] POST    294.5642ms /:device_key => /E7gBbmMxrKUoVdatpm4ijC {"title":"90"}
+2025-09-15 02:55:43    INFO    routeDoPush666.
+2025-09-15 02:55:43    INFO    msg:%s{"device_key":"E7gBbmMxrKUoVdatpm4ijC","title":"90","sound":"1107"}
+2025-09-15 02:55:43 INFO 192.168.69.192 -> [200] POST    294.9295ms /:device_key => /E7gBbmMxrKUoVdatpm4ijC {"title":"90"}
+2025-09-15 02:59:37    INFO    routeDoPush666.
+2025-09-15 02:59:37    INFO    msg:%s{"device_key":"E7gBbmMxrKUoVdatpm4ijC","title":"闸弄口横路","body":"中国\n浙江省\n杭州市 上城区\n闸弄口横路","sound":"1107"}
+2025-09-15 02:59:37 INFO 192.168.69.192 -> [200] POST    297.2134ms /:device_key => /E7gBbmMxrKUoVdatpm4ijC {"title":"闸弄口横路","body":"中国\n浙江省\n杭州市 上城区\n闸弄口横路"}
+2025-09-15 03:03:21    INFO    routeDoPush666.
+2025-09-15 03:03:21    INFO    msg:%s{"device_key":"E7gBbmMxrKUoVdatpm4ijC","title":"120.190277096381830.28055505414009","body":"中国\n浙江省\n杭州市 上城区\n闸弄口横路","sound":"1107"}
+2025-09-15 03:03:20 INFO 192.168.69.192 -> [200] POST    276.3318ms /:device_key => /E7gBbmMxrKUoVdatpm4ijC {"body":"中国\n浙江省\n杭州市 上城区\n闸弄口横路","title":"120.190277096381830.28055505414009"}
+2025-09-15 03:03:59    INFO    routeDoPush666.
+2025-09-15 03:03:59    INFO    msg:%s{"device_key":"E7gBbmMxrKUoVdatpm4ijC","title":"120.190277096381830.28055505414009","body":"中国\n浙江省\n杭州市 上城区\n闸弄口横路","sound":"1107"}
+2025-09-15 03:03:58 INFO 192.168.69.192 -> [200] POST    288.9509ms /:device_key => /E7gBbmMxrKUoVdatpm4ijC {"title":"120.190277096381830.28055505414009","body":"中国\n浙江省\n杭州市 上城区\n闸弄口横路"}
+2025-09-15 03:04:36    INFO    routeDoPush666.
+2025-09-15 03:04:36    INFO    msg:%s{"device_key":"E7gBbmMxrKUoVdatpm4ijC","title":"120.1902770963818分割30.28055505414009","body":"中国\n浙江省\n杭州市 上城区\n闸弄口横路","sound":"1107"}
+2025-09-15 03:04:36 INFO 192.168.69.192 -> [200] POST    289.1979ms /:device_key => /E7gBbmMxrKUoVdatpm4ijC {"title":"120.1902770963818分割30.28055505414009","body":"中国\n浙江省\n杭州市 上城区\n闸弄口横路"}
+2025-09-15 03:05:16    INFO    routeDoPush666.
+2025-09-15 03:05:16    INFO    msg:%s{"device_key":"E7gBbmMxrKUoVdatpm4ijC","title":"120.1902770963818分割30.28055505414009","body":"30.278165,120.194867中国\n浙江省\n杭州市 上城区\n闸弄口横路","sound":"1107"}
+2025-09-15 03:05:16 INFO 192.168.69.192 -> [200] POST    289.7386ms /:device_key => /E7gBbmMxrKUoVdatpm4ijC {"title":"120.1902770963818分割30.28055505414009","body":"30.278165,120.194867中国\n浙江省\n杭州市 上城区\n闸弄口横路"}

@@ -22,8 +22,10 @@ func init() {
 
 	// compatible with old requests
 	registerRouteWithWeight("register_compat", 100, func(router fiber.Router) {
+		// 用的这个
 		router.Get("/register", func(c *fiber.Ctx) error { return doRegister(c, true) })
 	})
+	// /register?devicetoken=1222ea3763e15b9dccfec642b8c73b38bb96e7a47592f4591f1cafb07984cfc6&key=
 }
 
 func doRegister(c *fiber.Ctx, compat bool) error {
@@ -48,11 +50,6 @@ func doRegister(c *fiber.Ctx, compat bool) error {
 		} else {
 			return c.Status(400).JSON(failed(400, "device token is empty"))
 		}
-	}
-
-	// DeviceToken length is variable, but should not be too long.
-	if len(deviceInfo.DeviceToken) > 128 {
-		return c.Status(400).JSON(failed(400, "device token is invalid"))
 	}
 
 	// if deviceInfo.DeviceKey=="", newKey will be filled with a new uuid
